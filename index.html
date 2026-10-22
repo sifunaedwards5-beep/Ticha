@@ -1,1 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b3b66">
+  <meta name="description" content="Ticha helps Kenyan senior-school learners study, practise, discover learning gaps and track progress.">
+  <title>Ticha — Learn it. Remember it. Master it.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabase.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Ticha home">
+      <span class="brand-mark">t</span><span>Ticha</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#how">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-quiet" data-open-auth="login">Log in</button>
+      <button class="btn btn-primary" data-open-auth="signup">Get started <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
 
+  <main id="home">
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Made for the way students learn</span>
+        <h1>Learn it.<br><span class="gradient-text">Remember it.</span><br>Master it.</h1>
+        <p class="hero-text">A personal learning companion for senior-school students in Kenya. Understand a topic, test what you remember, discover gaps, and know what to do next.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" id="try-demo">Try the interactive demo <span aria-hidden="true">→</span></button>
+          <button class="btn btn-outline btn-large" data-open-auth="signup">Create free account</button>
+        </div>
+        <div class="hero-note"><span class="avatar-stack"><i>T</i><i>✓</i><i>+</i></span><span>Start exploring before you sign up</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Preview of the Ticha learning dashboard">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="preview-card">
+          <div class="preview-top"><div><span class="tiny-label">YOUR LEARNING SPACE</span><h3>Good progress starts here.</h3></div><span class="status-pill"><span></span> Demo</span></div>
+          <div class="preview-stat-row">
+            <div class="preview-stat"><span>Topics explored</span><strong>06</strong><small>Keep building</small></div>
+            <div class="preview-stat"><span>Practice score</span><strong>8/10</strong><small class="green-text">Demo result</small></div>
+          </div>
+          <div class="mini-chart-title"><span>Learning progress</span><span>Sample data</span></div>
+          <div class="chart-bars" aria-hidden="true"><i style="height:35%"></i><i style="height:48%"></i><i style="height:42%"></i><i style="height:64%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:94%"></i></div>
+          <div class="next-lesson"><span class="lesson-icon">✦</span><div><small>YOUR NEXT STEP</small><strong>Practise what you learned</strong></div><span class="round-arrow">↗</span></div>
+        </div>
+        <div class="floating-note note-top"><span class="floating-icon">✦</span><div><strong>Made for you</strong><small>One step at a time</small></div></div>
+        <div class="floating-note note-bottom"><span class="floating-check">✓</span><div><strong>Learn actively</strong><small>Recall · Practise · Improve</small></div></div>
+      </div>
+    </section>
+
+    <section class="trust-strip section-wrap">
+      <span>BUILT AROUND A BETTER STUDY HABIT</span>
+      <div><span>Learn</span><b>→</b><span>Recall</span><b>→</b><span>Assess</span><b>→</b><span>Improve</span></div>
+    </section>
+
+    <section class="section section-wrap" id="how">
+      <div class="section-heading">
+        <span class="eyebrow">A smarter study routine</span>
+        <h2>Studying should lead<br>to <span class="gradient-text">understanding.</span></h2>
+        <p>Ticha turns each learning session into a useful next step—not just another completed lesson.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><div class="feature-icon blue-icon">▤</div><h3>Learn a concept</h3><p>Explore clear explanations, diagrams and carefully selected learning resources.</p></article>
+        <article class="step-card"><span class="step-number">02</span><div class="feature-icon purple-icon">◎</div><h3>Recall from memory</h3><p>Put your notes away and try a short question to check what stayed with you.</p></article>
+        <article class="step-card"><span class="step-number">03</span><div class="feature-icon green-icon">↗</div><h3>Find your next step</h3><p>Use your answers to guide revision and practise areas that need more attention.</p></article>
+      </div>
+    </section>
+
+    <section class="demo-section" id="demo">
+      <div class="section-wrap demo-layout">
+        <div class="demo-intro">
+          <span class="eyebrow">Explore before joining</span>
+          <h2>Take Ticha<br>for a <span class="gradient-text">test drive.</span></h2>
+          <p>Try a sample mini-lesson and answer a question. This demo works without creating an account. Its sample scores are not saved.</p>
+          <div class="demo-disclaimer"><span>ⓘ</span><span>Demo content is illustrative. It is not a complete official curriculum or a connected AI tutor.</span></div>
+        </div>
+        <div class="demo-panel">
+          <div class="demo-panel-header"><div><span class="live-dot"></span> INTERACTIVE DEMO</div><button class="text-button" id="reset-demo">Reset ↺</button></div>
+          <div class="demo-progress"><span id="demo-progress-fill"></span></div>
+          <div class="demo-body" id="demo-content">
+            <span class="topic-tag">SAMPLE SCIENCE LESSON</span>
+            <h3>How does the heart move blood?</h3>
+            <p class="lesson-copy">The heart acts as a pump. The right side sends blood to the lungs to pick up oxygen. The left side sends oxygen-rich blood around the body.</p>
+            <div class="lesson-visual"><div class="heart-symbol">♥</div><div><strong>Remember the route</strong><span>Body → right heart → lungs → left heart → body</span></div></div>
+            <div class="recall-box"><span class="recall-label">RECALL CHECK</span><h4>Which side of the heart pumps oxygen-rich blood to the body?</h4>
+              <div class="answer-options">
+                <button class="answer-option" data-answer="right">The right side</button>
+                <button class="answer-option" data-answer="left">The left side</button>
+                <button class="answer-option" data-answer="both">Both sides directly</button>
+              </div>
+              <p id="answer-feedback" class="answer-feedback" aria-live="polite">Choose an answer to see your feedback.</p>
+            </div>
+            <div class="demo-footer"><span>Lesson + recall</span><button class="btn btn-primary" id="demo-next" disabled>Continue <span aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="demo-result hidden" id="demo-result">
+            <div class="result-check">✓</div><span class="topic-tag">DEMO COMPLETE</span>
+            <h3>You took the first step.</h3>
+            <p id="result-copy">You checked your understanding. Real Ticha accounts will build a longer-term learning record from assessment evidence.</p>
+            <div class="result-actions"><button class="btn btn-primary" data-open-auth="signup">Create a free account</button><button class="btn btn-outline" id="try-again">Try again</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-wrap" id="features">
+      <div class="section-heading">
+        <span class="eyebrow">Designed for steady progress</span>
+        <h2>Your learning journey,<br><span class="gradient-text">all in one place.</span></h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon blue-icon">✧</div><h3>AI learning companion</h3><p>Ask questions, request simpler explanations and work through examples with guidance.</p><span class="feature-status">Planned for connected release</span></article>
+        <article class="feature-card"><div class="feature-icon green-icon">⌁</div><h3>Personal study plan</h3><p>Get suggested next steps based on goals, recent practice and topics due for review.</p><span class="feature-status">Planned for connected release</span></article>
+        <article class="feature-card"><div class="feature-icon purple-icon">▥</div><h3>Progress insights</h3><p>See results across topics and compare performance on suitable assessments over time.</p><span class="feature-status">Planned for connected release</span></article>
+      </div>
+    </section>
+
+    <section class="pricing-section section-wrap" id="pricing">
+      <div class="section-heading">
+        <span class="eyebrow">Simple plans</span><h2>Start free. Grow<br><span class="gradient-text">with your learning.</span></h2>
+        <p>Proposed launch pricing. Premium features and payment activation will follow product testing.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card"><span class="plan-label">BASIC</span><h3>Free</h3><p class="price-sub">Explore and build your study habit.</p><ul><li>Selected lessons and resources</li><li>Topic quizzes and explanations</li><li>Basic progress summary</li><li>Limited AI tutor access when launched</li></ul><button class="btn btn-outline full-width" data-open-auth="signup">Start for free</button></article>
+        <article class="price-card premium-card"><span class="popular-label">PERSONALISED LEARNING</span><span class="plan-label">PREMIUM</span><h3>KES 800 <small>/ month</small></h3><p class="price-sub">More guidance to work on learning gaps.</p><ul><li>Everything in Basic</li><li>Expanded AI tutor allowance</li><li>Personalised gap analysis</li><li>Adaptive study and revision plan</li><li>Delayed recall and retention tracking</li><li>Detailed topic-level progress</li></ul><button class="btn btn-primary full-width" data-open-auth="signup">Join the early-access list</button><p class="price-footnote">Payments are not enabled in this prototype.</p></article>
+      </div>
+    </section>
+
+    <section class="final-cta section-wrap"><div><span class="eyebrow">Your next step starts here</span><h2>Make every study session count.</h2><p>Explore the demo, then create an account when you're ready.</p></div><button class="btn btn-light btn-large" data-open-auth="signup">Get started free <span>→</span></button></section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">t</span><span>Ticha</span></a><p>Learn it. Remember it. Master it.</p><div><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="mailto:hello@example.com">Contact</a></div><small>© <span id="year"></span> Ticha. Prototype — educational content and features are under development.</small></footer>
+
+  <div class="modal-backdrop hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="auth-modal">
+      <button class="modal-close" id="close-auth" aria-label="Close dialog">×</button>
+      <a class="brand modal-brand" href="#home"><span class="brand-mark">t</span><span>Ticha</span></a>
+      <span class="eyebrow" id="auth-eyebrow">YOUR LEARNING JOURNEY</span>
+      <h2 id="auth-title">Create your free account</h2>
+      <p id="auth-description">Save your learning progress and continue across sessions.</p>
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="signup">Sign up</button><button class="auth-tab" data-auth-mode="login">Log in</button></div>
+      <form id="auth-form">
+        <label id="name-label">First name or display name<input id="display-name" name="displayName" autocomplete="given-name" placeholder="What should we call you?"></label>
+        <label>Email address<input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"></label>
+        <p class="form-note">For learners under 18, account setup must include age-appropriate privacy information and any legally required guardian consent before collecting or processing learner data.</p>
+        <button class="btn btn-primary full-width" type="submit" id="auth-submit">Create account</button>
+        <p id="auth-message" class="auth-message" aria-live="polite"></p>
+      </form>
+      <p class="auth-terms">By continuing, you agree to use Ticha responsibly. Terms and privacy information must be finalised before public launch.</p>
+    </div>
+  </div>
+  <div class="toast hidden" id="toast" role="status"></div>
+</body>
+</html>
