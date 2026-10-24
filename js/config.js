@@ -1,3 +1,3 @@
 
-export const SUPABASE_URL = "PASTE_YOUR_PROJECT_URL_HERE";
+export const SUPABASE_URL = "https://utslwvshlffakflfetgg.supabase.co/rest/v1/";
 export const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
